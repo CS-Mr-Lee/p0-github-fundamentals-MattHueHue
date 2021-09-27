@@ -1,0 +1,133 @@
+/*
+Name :Matthew Hui
+Program Name:Method1
+Date :2021 9 22
+Program Uses :This program calculate the different property of a line with method.
+*/
+   
+import java.lang.Math;
+import java.util.*;
+
+public class Method1        
+{
+   public static void main(String[] args)
+   {
+      //Variable and array
+      int x1 = 0;
+      int x2 = 0;
+      int y1 = 0;  
+      int y2 = 0;
+      String takeErrorKey;
+      double slope, length;
+      boolean invalidOutput = true;
+      Scanner sc = new Scanner(System.in);
+     
+      //Display info about the program
+      System.out.println("calculate the different property of a line with method.\n");
+     
+      //Promt user for a line
+      while(invalidOutput)
+      {
+         try
+         {
+            invalidOutput = false;
+            System.out.print("Enter value for x1: ");
+            x1 = sc.nextInt();
+         }
+         catch (InputMismatchException e)
+         {
+            invalidOutput = true;
+            System.out.println("Please enter an integer value for x1.");
+            takeErrorKey = sc.nextLine();
+         }
+      }
+      
+      invalidOutput = true;
+      
+      while(invalidOutput)
+      {
+         try
+         {
+            invalidOutput = false;
+            System.out.print("Enter value for y1: ");
+            y1 = sc.nextInt();
+         }
+         catch (InputMismatchException e)
+         {
+            invalidOutput = true;
+            System.out.println("Please enter an integer value for y1.");
+            takeErrorKey = sc.nextLine();
+         }
+      }
+      
+      invalidOutput = true;
+      
+      while(invalidOutput)
+      {
+         try
+         {
+            invalidOutput = false;
+            System.out.print("Enter value for x2: ");
+            x2 = sc.nextInt();
+         }
+         catch (InputMismatchException e)
+         {
+            invalidOutput = true;
+            System.out.println("Please enter an integer value for x2.");
+            takeErrorKey = sc.nextLine();
+         }
+      }
+      
+      invalidOutput = true;
+      
+      while(invalidOutput)
+      {
+         try
+         {
+            invalidOutput = false;
+            System.out.print("Enter value for y2: ");
+            y2 = sc.nextInt();
+         }
+         catch (InputMismatchException e)
+         {
+            invalidOutput = true;
+            System.out.println("Please enter an integer value for y2.");
+            takeErrorKey = sc.nextLine();
+         }
+      }
+    
+      //Give x1, x2, y1, y2 to length method
+      length = length(x1, y1, x2, y2);
+      
+      //Give x1, x2, y1, y2 to slope method
+      slope = slope(x1, y1, x2, y2);
+      
+      //print slope and length
+      System.out.printf("Length: %.2f\n", length);
+      System.out.printf("Slope : %.2f", slope);
+   }
+   
+   public static double length (int x1, int y1, int x2, int y2)
+   {
+      int xLength, yLength, pythagoreanSum;
+      double totalLength;
+      
+      xLength = x2 - x1;
+      yLength = y2 - y1;
+      pythagoreanSum = xLength * xLength + yLength * yLength;
+      totalLength = Math.sqrt(pythagoreanSum);
+      return totalLength;
+   }
+   
+   public static double slope (int x1, int y1, int x2, int y2)
+   {
+      int xLength, yLength;
+      double slope;
+            
+      xLength = x2 - x1;
+      yLength = y2 - y1;
+      slope = (double)yLength / xLength;
+      return slope;
+   
+   }
+}
