@@ -1,0 +1,192 @@
+/*
+Name :Matthew Hui
+Program Name:FoolProofing  
+Date :2021 9 22
+Program Uses :This program creates a text file that contains a power of two table in HTML format.
+              The size (maximum power) of the table should be inputted by user. 
+*/
+   
+import java.util.*;
+import java.io.*;
+
+public class FoolProofing        
+{
+   public static void main(String[] args)
+   {
+      //Constant, Variable and array
+      final String EXIT_KEY = "q";
+      double modCheck;
+      int numerator = 0;
+      int divisor = 0;
+      int quotientInt = 0;
+      double quotientDouble = 0;
+      String beginCharacter;
+      double doubleNumeratorHolder = 0;
+      double doubleDivisorHolder = 0;
+      String takeErrorKey;
+      boolean invalidOutput = true;
+      boolean intergerQuotient = true;
+      boolean invalidNumberatorVaule = false;
+      boolean invalidArithmetic = false;
+      boolean stringExist = false;
+      Scanner sc = new Scanner(System.in);
+     
+      //Display info about the program
+      System.out.println("This program creates a text file that contains a power of two table in HTML format.");
+      System.out.println("The size (maximum power) of the table should be inputted by user.\n");
+     
+      //Promt user for a line
+      while(invalidOutput)
+      {
+         try
+         {
+            invalidOutput = true;
+            System.out.print("\nEnter the numerator: ");
+            numerator = sc.nextInt();
+         }
+         catch (InputMismatchException e)
+         {
+            invalidOutput = true;
+            takeErrorKey = sc.nextLine();
+            try
+            {
+               doubleNumeratorHolder = Double.parseDouble(takeErrorKey);
+               intergerQuotient = false;
+            }
+            catch(NumberFormatException f)
+            {
+               stringExist = true;
+               beginCharacter = takeErrorKey.substring(0, 1);
+               if(!beginCharacter.equalsIgnoreCase(EXIT_KEY))
+               {
+                  System.out.println("You entered the wrong data type.");
+                  System.out.println("Please enter a number or an integer.");
+               }
+               else
+               {
+                  invalidOutput = false;
+                  System.out.println("Program ended.");
+               }
+            }
+         }
+         
+         //if statement that check is previous input numeric value
+         if(!stringExist)
+         {
+            try
+            {
+               invalidOutput = true;
+               System.out.print("Enter the divisor: ");
+               divisor = sc.nextInt();
+            }
+            catch (InputMismatchException g)
+            {
+               invalidOutput = true;
+               takeErrorKey = sc.nextLine();
+               try
+               {
+                  doubleDivisorHolder = Double.parseDouble(takeErrorKey);
+                  intergerQuotient = false;
+               }
+               catch(NumberFormatException h)
+               {
+                  invalidNumberatorVaule = true;
+                  beginCharacter = takeErrorKey.substring(0, 1);
+                  if(!beginCharacter.equalsIgnoreCase(EXIT_KEY))
+                  {
+                     System.out.println("You entered the wrong data type.");
+                     System.out.println("Please enter a number or an integer.");
+                  }
+                  else
+                  {
+                     invalidOutput = false;
+                     System.out.println("Program ended.");
+                  }
+               }
+            }
+         
+         
+         //Check is input a numerator value
+            if(!invalidNumberatorVaule)
+            {
+               try
+               {
+                  if (numerator % divisor == 0)
+                  {
+                     quotientInt = numerator / divisor;
+                  }
+                  else
+                  {
+                     doubleNumeratorHolder = (double)numerator;
+                     doubleDivisorHolder  = (double)divisor;
+                     quotientDouble = doubleNumeratorHolder / doubleDivisorHolder;
+                  }
+               }
+               catch(ArithmeticException i)
+               {
+                  invalidArithmetic = true;
+                  if(divisor == 0 && numerator != 0)
+                  {
+                     System.out.printf("You can't divide %d by %d\n",numerator ,divisor );
+                  }
+                  else if(doubleDivisorHolder == 0)
+                  {
+                  
+                     System.out.printf("You can't divide %.2f by %.2f\n", doubleNumeratorHolder, doubleDivisorHolder);
+                  }
+                  else
+                  {
+                     System.out.println("\nBad input type:  " + i);
+                  }
+               }
+            }
+         
+         //if statement that check for arithmeticException
+            if (!invalidArithmetic)
+            {
+            //If statement that check does numerator or divisor have decimal place
+               modCheck = doubleNumeratorHolder % 1;
+               doubleNumeratorHolder = (double)numerator;
+               doubleDivisorHolder  = (double)divisor;
+               if (modCheck == 0 || intergerQuotient)
+               {
+                  System.out.printf("%.0f / ", doubleNumeratorHolder);
+               }
+               else
+               {
+                  System.out.printf("%.2f / ", doubleNumeratorHolder);
+               }
+            
+               modCheck = doubleDivisorHolder % 1;
+               if (modCheck == 0 || intergerQuotient)
+               {
+                  System.out.printf("%.0f = ", doubleDivisorHolder);
+               }
+               else
+               {
+                  System.out.printf("%.2f = ", doubleDivisorHolder);
+               }
+            
+            //If statement that check quotient is int or double
+               if(quotientInt != 0)
+               {
+                  System.out.print(quotientInt);
+               }
+               else
+               {  
+                  System.out.printf("%.2f", quotientDouble);
+               }
+               System.out.println("");
+            }
+         }
+      //reset value
+         quotientInt = 0;  
+         intergerQuotient = true;
+         invalidNumberatorVaule = false; 
+         invalidArithmetic = false; 
+         stringExist = false;
+      }
+      
+      
+   }
+}
