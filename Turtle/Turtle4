@@ -1,0 +1,130 @@
+import java.util.*;
+
+public class turtle4 {
+   public static void main(String[] a)
+   {
+      Turtle turtle = new Turtle();
+      Scanner sc = new Scanner(System.in);
+   //Look at https://docs.oracle.com/javase/7/docs/api/java/awt/Color.html for different colours
+      Turtle.bgcolor("lightblue");
+      turtle.penColor("black");
+      turtle.width(10);
+      double squareLength, rectangleWidth, rectangleLength, triangle ;
+      String selection;
+      final String FILLED_SQUARE = "fill square";
+      final String FILLED_RECTANGLE = "fill rectangle";
+      
+      
+      System.out.print("Select the shape to be fill:\n");
+            System.out.print("Enter <fill rectangle> to fill rectangle\n");
+            System.out.print("Enter <fill square> to fill square\n");
+            System.out.print("Enter desire shape:\n");
+            selection = sc.nextLine();
+
+      switch (selection)
+      {
+         case FILLED_SQUARE:
+            System.out.print("Enter the length of the square: \n");
+            squareLength = sc.nextDouble();
+            fillSquare(turtle, squareLength);
+            break;
+            
+         case FILLED_RECTANGLE:
+            System.out.print("Enter the width of the rectangle: \n");
+            rectangleWidth = sc.nextDouble();
+            System.out.print("Enter the length of the rectangle: \n");
+            rectangleLength = sc.nextDouble();
+            fillRectangle(turtle, rectangleLength, rectangleWidth);
+            break;
+      }
+      
+      
+   
+   }
+   
+   public static void fillSquare(Turtle turtle,double squareLength)
+   {
+      int modCheck;
+      for(int i = 0; i < squareLength; i++)
+      {
+         for(int j = 0; j < squareLength; j++)
+         {
+            turtle.forward(5);
+         }
+         modCheck = i%2;
+         if (i == squareLength - 1)
+         {
+         
+         }
+         else if (modCheck == 0)
+         {
+         turtle.left(90);
+         turtle.forward(5);
+         turtle.left(90);
+         }
+         else
+         {
+         turtle.right(90);
+         turtle.forward(5);
+         turtle.right(90);
+         }
+
+      
+      }
+   }
+
+   public static void fillRectangle(Turtle turtle,double rectangleLength, double rectangleWidth)
+   {
+      int modCheck;
+      for(int i = 0; i < rectangleLength; i++)
+      {
+         for(int j = 0; j < rectangleWidth; j++)
+         {
+            turtle.forward(5);
+         }
+         modCheck = i%2;
+         if (i == rectangleLength - 1)
+         {
+         
+         }
+         else if (modCheck == 0)
+         {
+         turtle.left(90);
+         turtle.forward(5);
+         turtle.left(90);
+         }
+         else
+         {
+         turtle.right(90);
+         turtle.forward(5);
+         turtle.right(90);
+         }
+      
+      }
+   }
+}
+/*possible codes:
+   bob.forward(distance)
+   bob.backward(distance)
+   bob.left(angle)
+   bob.right(angle)
+   
+   bob.up()
+   bob.down()
+   
+   bob.setDirection(angle)
+   bob.home()
+   bob.hide()
+   bob.show()
+   bob.face(x, y)
+   bob.setPosition(x, y)
+   
+   bob.tilt(angle)
+   bob.width(width)
+   bob.penColor("colour")
+   bob.bgcolor("colour")
+   bob.stamp()
+   bob.dot()
+   bob.dot("colour")
+   bob.dot("colour", dotsize)
+   */
