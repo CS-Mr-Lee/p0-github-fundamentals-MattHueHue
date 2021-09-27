@@ -1,0 +1,52 @@
+/*
+Name :Matthew Hui
+Program Name:Array1D2
+Date :2021 9 22
+Program Uses :This program  initialized an array of size 14 with user input and
+                            then reverses the order of the values in the array using the specified method
+*/
+import java.util.*;
+
+public class Array1D2     
+{
+   public static void main(String[] args)
+   {
+     //Variable and array
+      final int ARRAY_CONSTANT_REVERSE = -1;
+      final int ARRAY_CONSTANT = 14;
+      String[] array1;
+      array1 = new String [14];
+      int arrayPosition;
+      int valueNumber = 1;
+      Scanner sc = new Scanner(System.in);
+     
+     //Display info about the program
+      System.out.println("This program will print 14 given values in reverse order.\n");
+     
+     //For loop that end when user enter 14 values
+      for(int i = 13; i > ARRAY_CONSTANT_REVERSE; i--) 
+      {
+          //Prompt user for 14 values
+         System.out.printf("Enter value%d: ", valueNumber);
+         array1[i] = sc.nextLine();
+         valueNumber++;
+      }
+      
+      //Reset valueNumber
+      valueNumber = 1;
+      
+      //Create a new line
+      System.out.println("");
+      
+      
+      //For loop that print array 2
+      for(int i = 0; i < ARRAY_CONSTANT; i++) 
+      {
+          //Print array2
+         System.out.printf("Value%d: %s%n", valueNumber, array1[i]);
+         valueNumber++;
+      
+      }
+      
+   }
+}
