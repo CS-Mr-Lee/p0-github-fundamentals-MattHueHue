@@ -1,0 +1,52 @@
+/*
+Name :Matthew Hui
+Program Name:Array1D1
+Date :2021 9 22
+Program Uses :This program  initialized an array of size 14 with user input and
+                            then reverses the order of the values in the array using the specified method
+*/
+import java.util.*;
+
+public class Array1D1     
+{
+   public static void main(String[] args)
+   {
+     //Variable and array
+      final int ARRAY_CONSTANT = 14;
+      String[] array1;
+      String[] array2;
+      array2 = new String [14];
+      array1 = new String [14];
+      int arrayPosition;
+      Scanner sc = new Scanner(System.in);
+     
+     //Display info about the program
+      System.out.println("This program will print 14 given values in reverse order.\n");
+     
+     //For loop that end when user enter 14 values
+      for(int i = 0; i < ARRAY_CONSTANT; i++) 
+      {
+          //Prompt user for 14 values
+         System.out.printf("Enter value%d: ", i + 1);
+         array1[i] = sc.nextLine();
+      }
+      
+      //For loop that reverse order of value
+      for(int i = 0; i < ARRAY_CONSTANT; i++)
+      {
+         //caculate array position
+         arrayPosition = ARRAY_CONSTANT - i - 1;
+         
+         //Copy array1 to array 2 in reverse order
+         array2[i] = array1[arrayPosition];
+      }
+      
+      //For loop that print array 2
+      for(int i = 0; i < ARRAY_CONSTANT; i++) 
+      {
+          //Print array2
+         System.out.printf("Value%d: %s%n", i + 1, array2[i]);
+      }
+      
+   }
+}
