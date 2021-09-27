@@ -1,0 +1,96 @@
+/*
+Name :Matthew Hui
+Program Name:TwoPowerTable
+Date :2021 9 22
+Program Uses :This program creates a text file that contains a power of two table in HTML format.
+              The size (maximum power) of the table should be inputted by user. 
+*/
+   
+import java.util.*;
+import java.io.*;
+
+public class TwoPowerTable        
+{
+   public static void main(String[] args)
+   {
+      //Constant, Variable and array
+      final String FILE_NAME = "twoPowerTable.html";
+      final int EXPONENT_TWO_CONSTANT = 2;
+      int maximum = 0;
+      int powerOfTwo = 2;
+      String takeErrorKey;
+      boolean invalidOutput = true;
+      Scanner sc = new Scanner(System.in);
+     
+      //Display info about the program
+      System.out.println("This program creates a text file that contains a power of two table in HTML format.");
+      System.out.println("The size (maximum power) of the table should be inputted by user.\n");
+     
+      //Promt user for a line
+      while(invalidOutput)
+      {
+         try
+         {
+            invalidOutput = false;
+            System.out.print("Enter maximum power of 2 wanted: ");
+            maximum = sc.nextInt();
+         }
+         catch (InputMismatchException e)
+         {
+            invalidOutput = true;
+            System.out.println("Please enter an integer value for maximum of 2 wanted.");
+            takeErrorKey = sc.nextLine();
+         }
+      }
+      
+      //Create the start of the html
+      try
+      {  
+         FileWriter writer = new FileWriter(FILE_NAME, true);
+         writer.write("<html><head>");
+         writer.write("<title>Powers of Two</title>");
+         writer.write("</head>");
+         writer.write("<body>");
+         writer.write("<table border cellpadding=5>");
+         writer.write("<tr><th>Power of 2</th><th>Value</th></tr>");
+         writer.close();
+      }
+      catch (IOException e)
+      {
+         System.out.println(e + "  Problem writing " + FILE_NAME);
+      }
+      
+      
+      //write power of two into the file
+      try
+      {  
+         FileWriter writer = new FileWriter(FILE_NAME, true);
+         writer.write("<tr><td>0</td><td>1</td></tr>");
+         for (int exponent = 1; exponent <= maximum; exponent++)
+         {
+            writer.write("<tr><td>" + exponent + "</td><td>" + powerOfTwo + "</td></tr>");
+            powerOfTwo = powerOfTwo * EXPONENT_TWO_CONSTANT;
+         }
+         writer.close();
+      
+      }
+      catch (IOException e)
+      {
+         System.out.println(e + "  Problem writing " + FILE_NAME);
+      }
+      
+      //Writer the ending for html
+      try
+      {  
+         FileWriter writer = new FileWriter(FILE_NAME, true);
+         writer.write("</table>");
+         writer.write("</body></html>");
+         writer.close();
+      }
+      catch (IOException e)
+      {
+         System.out.println(e + "  Problem writing " + FILE_NAME);
+      }
+   
+   }
+}
