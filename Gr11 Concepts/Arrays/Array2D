@@ -1,0 +1,162 @@
+/*
+Name :Matthew Hui
+Program Name:Array2D
+Date :2021 1 03
+Program Uses :This program  initialized an array of size 14 with user input and
+                            then reverses the order of the values in the array using the specified method
+*/
+import java.util.*;
+
+public class Array2D
+{
+   public static void main(String[] args)
+   {
+     //Variable and array
+      double [][] test;
+      double [] average;
+      int [] highestAverageGroup;
+      String [] studentName;
+      int amountOfStudents, amountOfTestPerStudent, highestAverage;
+      double classAverage = 0;
+      int markSum = 0;
+      int amountOfHighestGroup = 0;
+      int valueNumber = 1;
+      Scanner sc = new Scanner(System.in);
+     
+     //Display info about the program
+      System.out.println("This program will print out the average test marks.");
+      System.out.println("Then this program will out put the highest average.");
+      System.out.println("Then this program will list all the student(s) whoses marks are higher than the average.\n");
+   
+     
+     //Promt user for number of students and test
+      System.out.print("Enter number of stundet(s): ");
+      amountOfStudents = sc.nextInt();
+      System.out.print("Enter number of test(s) per student(s): ");
+      amountOfTestPerStudent = sc.nextInt();
+      test = new double [amountOfStudents][amountOfTestPerStudent];
+      average = new double [amountOfStudents];
+      studentName = new String [amountOfStudents];
+      highestAverageGroup = new int [amountOfStudents];
+      
+      //For loop that end when all names are enter
+      for (int studentNumber = 0; studentNumber < amountOfStudents; studentNumber++)
+      {
+         //Prompt user name of students
+         System.out.printf("Enter name of student%d: ", studentNumber + 1);
+         if (studentNumber == 0)
+         {
+            studentName[studentNumber] = sc.nextLine();
+         }
+         studentName[studentNumber] = sc.nextLine();
+      }
+      
+      System.out.println("\n\nMarks: \n");
+      
+      //For loop that end when all names are enter
+      for (int studentNumber = 0; studentNumber < amountOfStudents; studentNumber++)
+      {
+      
+         //For loop that end when all names are enter
+         for (int testNumber = 0; testNumber < amountOfTestPerStudent; testNumber++)
+         {
+            //Try catch block that catch invalid input by user
+            try
+            {
+            //Prompt user name of students
+               System.out.printf("Enter %s's test%d mark: ", studentName[studentNumber], testNumber + 1);
+               test[studentNumber][testNumber] = sc.nextInt();
+            
+            //If statment that check for valid marks
+               if( test[studentNumber][testNumber] > 100 ||  test[studentNumber][testNumber] < 0)
+               {
+                  System.out.println("Please enter a valid mark");
+                  testNumber--;
+               }
+            
+            }
+            catch(InputMismatchException e)
+            {
+               System.out.println("Please enter a valid mark");
+               testNumber--;
+            }
+         
+         }
+         System.out.println("");
+      }
+      //Caculate average for each student(s)
+      for (int studentNumber = 0; studentNumber < amountOfStudents; studentNumber++)
+      {
+      
+         //For loop that end when all names are enter
+         for (int testNumber = 0; testNumber < amountOfTestPerStudent; testNumber++)
+         {
+            markSum += test[studentNumber][testNumber];
+         }
+         average[studentNumber] = markSum / amountOfTestPerStudent;
+         System.out.printf("%s Average: %.2f\n", studentName[studentNumber] ,  average[studentNumber]);
+         markSum = 0;
+      }
+      
+      //Find the student's with the highest average
+      highestAverage =  0;
+      for (int studentNumber = 0; studentNumber < amountOfStudents; studentNumber++)
+      {
+         if (average[highestAverage] < average[studentNumber])
+         {
+            
+            //clear the highestAverageArray;
+            highestAverageGroup= new int[amountOfStudents];
+            amountOfHighestGroup = 0;
+            
+            highestAverageGroup[amountOfHighestGroup] = studentNumber;
+         }
+         else if(average[highestAverage] == average[studentNumber])
+         {
+            amountOfHighestGroup++;
+            highestAverageGroup[amountOfHighestGroup] = studentNumber;
+         }
+         
+      }
+      
+      //Print student(s) with highest average
+      if(amountOfHighestGroup > 0)
+      {
+         System.out.print("Groups of student that have the highest average: \n");
+         for (int student = 0; student < amountOfHighestGroup; student++)
+         {
+            System.out.printf("%s ", studentName[highestAverageGroup[student]]);
+         }
+      }
+      else
+      {
+         System.out.printf("%s ", studentName[highestAverageGroup[0]]);
+      
+      }
+      
+      //Caculate class average and find thoese whoese average are higher
+      for (int studentNumber = 0; studentNumber < amountOfStudents; studentNumber++)
+      {
+         classAverage += average[studentNumber];      
+      }
+      
+      classAverage = classAverage / amountOfStudents;
+      
+      System.out.println("\n\nClass Average: " + classAverage + "%");
+      
+      System.out.println("Students that have higher average than the class average:");
+      
+      if (average[0] > classAverage)
+         {
+            System.out.printf("%s", studentName[0]);      
+         }
+         
+      for (int studentNumber = 1; studentNumber < amountOfStudents; studentNumber++)
+      {
+         if (average[studentNumber] > classAverage)
+         {
+            System.out.printf(" %s", studentName[studentNumber]);      
+         }
+      }
+   }
+}
