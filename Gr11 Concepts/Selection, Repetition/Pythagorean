@@ -1,0 +1,51 @@
+/*
+Name :Matthew Hui
+Program Name:Pythagorean
+Date :2021 9 22
+Program Uses :This program print number that form Pythagorean triplet.Stop when the largest member is bigger than the positive integer entered.
+*/
+import java.util.*;
+
+public class Pythagorean     
+{
+   public static void main(String[] args)
+   {
+     //Variable
+      final String FORMAT = "%d^2 + %d^2 = %d^2%n";   
+      int integer, a2b2, a2, b2, c2;
+      Scanner sc = new Scanner(System.in);
+     
+     //Display Information About the Program
+      System.out.println("This program print number that form Pythagorean triplet.");
+      System.out.println("Stop when the largest member is bigger than the positive integer entered.");
+      
+      //Promt user for information
+      System.out.print("Enter a Positive Integer:");
+      integer = sc.nextInt();
+           
+     //For Loop that check all integer from 1 to the integer entered for c
+      for(int  c = 1;  c <= integer;  c++)
+      {
+         c2 = c * c;
+         
+         //For Loop that check all integer from 1 to c for b
+         for(int b = 1; b < c; b++)
+         {
+            b2 = b * b;
+            
+            //For Loop that check all integer from 1 to b for a
+            for(int a = 1; a < b; a++)
+            {
+               a2 = a * a;
+               a2b2 = a2 + b2;
+               
+               //If statment that check a2 + b2 = c2 is true
+               if(a2b2 == c2)
+               {
+                  System.out.printf(FORMAT, a, b, c);
+               }
+            }
+         }
+      }
+   }
+}
