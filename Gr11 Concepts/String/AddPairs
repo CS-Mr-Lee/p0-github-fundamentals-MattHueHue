@@ -1,0 +1,95 @@
+/*
+Name :Matthew Hui
+Program Name:AddPairs
+Date :2021 9 22
+Program Uses :This program divides a number entered by the users into a set of two digits numbers,
+              then output the sum of the set of numbers.
+*/
+   
+import java.util.*;
+
+public class AddPairs    
+{
+   public static void main(String[] args)
+   {
+      //Variable and array
+      String numbers = "";
+      String [] pairsHolder;
+      int [] pairsIntegerHolder;
+      int stringLength, pairsAmount, validTester, beginIndex, endIndex, modCheck;
+      int sum = 0;
+      boolean invalidOutput = true;
+      Scanner sc = new Scanner(System.in);
+     
+      //Display info about the program
+      System.out.println("divides a number entered by the users into a set of two digits numbers,");
+      System.out.println("then output the sum of the set of numbers.\n");
+     
+      //Promt user for a line
+      while(invalidOutput)
+      {
+         try
+         {
+            invalidOutput = false;
+            System.out.print("Enter a number: ");
+            numbers = sc.nextLine();
+            validTester = Integer.parseInt(numbers);
+         }
+         catch(NumberFormatException e)
+         {
+            invalidOutput = true;
+            System.out.println("Please enter a valid number");
+         }
+      }
+    
+      //Divides number enter to s set of two digit number
+      stringLength = numbers.length();
+      modCheck = stringLength % 2;
+      pairsAmount = stringLength/2 + modCheck;
+      pairsHolder = new String[pairsAmount];
+      pairsIntegerHolder = new int[pairsAmount];
+      for(int pairNumber = 0; pairNumber < pairsAmount; pairNumber++)
+      {
+         if(pairNumber != pairsAmount - 1)
+         {
+            beginIndex = pairNumber * 2;
+            endIndex = beginIndex + 2;
+            pairsHolder[pairNumber] = numbers.substring(beginIndex, endIndex);
+         }
+         else if(modCheck == 0)
+         {
+            beginIndex = pairNumber * 2;
+            pairsHolder[pairNumber] = numbers.substring(beginIndex) ;
+         }
+         else
+         {
+             beginIndex = pairNumber * 2;
+            pairsHolder[pairNumber] = numbers.substring(beginIndex);
+         }
+      }
+      
+      //Caculate sum
+      for(int pairNumber = 0; pairNumber < pairsAmount; pairNumber++)
+      {
+         pairsIntegerHolder[pairNumber] = Integer.parseInt(pairsHolder[pairNumber]);
+         sum += pairsIntegerHolder[pairNumber];
+      }
+      
+      //Output caculation and sum
+      System.out.print("Sum = ");
+      for(int pairNumber = 0; pairNumber < pairsAmount; pairNumber++)
+      {
+         System.out.print(pairsIntegerHolder[pairNumber]);
+         if (pairNumber != pairsAmount - 1)
+         {
+            System.out.print(" + ");
+         }
+         else
+         {
+            System.out.print(" = ");
+         }
+      }
+      System.out.print(sum);
+      
+   }
+}
