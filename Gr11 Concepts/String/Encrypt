@@ -1,0 +1,91 @@
+/*
+Name :Matthew Hui
+Program Name:String1
+Date :2021 9 22
+Program Uses :This program encrypts a line of code
+*/
+   
+import java.util.*;
+
+public class Encrypt     
+{
+   public static void main(String[] args)
+   {
+     //Variable and array
+      String line;
+      int stringLength, charLocation;
+      int spaceAmount = 1;
+      int charSwitchPostion = 0;
+      char [] encryptLine;
+      int[] spaceLocation;
+      char spaceCheck, charConverter;
+      Scanner sc = new Scanner(System.in);
+     
+     //Display info about the program
+      System.out.println("This program will encrypts a line of code.\n");
+     
+    //Promt user for a line
+      System.out.print("Enter a line to be encrypted: ");
+      line = sc.nextLine();
+            
+      //Encrypts the line
+      stringLength = line.length();
+      spaceLocation = new int [stringLength + 1];
+      encryptLine = new char [stringLength];
+      
+      spaceLocation[0] = -1;
+      
+      //For loop to find space
+      for(int charPosition = 0; charPosition < stringLength; charPosition++)
+      {
+         spaceCheck = line.charAt(charPosition);
+         if (spaceCheck == ' ')
+         {
+            spaceLocation[spaceAmount] = charPosition;
+            spaceAmount++;
+         }
+         else if(charPosition == stringLength-1)
+         {
+            spaceLocation[spaceAmount] = stringLength;
+         }
+      }
+      spaceAmount = 0;
+      
+      //For loop that switch first and last character of each string
+      for (int charPosition = -1; charPosition < stringLength; charPosition++)
+      {
+         if(charPosition == spaceLocation[spaceAmount])
+         {
+            spaceAmount++;
+            charLocation = spaceLocation[spaceAmount] - 1;
+            if(spaceLocation[spaceAmount]-1 > 0)
+            {
+               encryptLine[charPosition + 1] = line.charAt(charLocation);
+            }
+         }
+         else if(charPosition == spaceLocation[spaceAmount] - 1)
+         {
+            charLocation = spaceLocation[spaceAmount - 1] + 1;
+            encryptLine[charPosition] = line.charAt(charLocation);
+         
+         }
+         else if(charPosition == spaceLocation[spaceAmount - 1] + 1)
+         {         
+         }
+         else 
+         {
+            charConverter = line.charAt(charPosition);
+            charConverter += 2;
+            encryptLine[charPosition] = charConverter;
+         
+         }
+         
+      }
+      
+      //Change char array to string
+      String output = new String(encryptLine);
+      
+      //Output result
+      System.out.printf("Output: %s", output);
+   }
+}
