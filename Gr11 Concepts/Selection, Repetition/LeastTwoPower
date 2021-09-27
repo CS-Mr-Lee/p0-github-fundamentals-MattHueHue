@@ -1,0 +1,37 @@
+/*
+Name :Matthew Hui
+Program Name: LeastTwoPower
+Date:2021 9 16
+Program Uses :This program eads a positive integer and then finds the smallest power of two 
+              that is greater than or equal to the number that are read.
+   */
+
+import java.util.*;
+
+public class LeastTwoPower
+{
+   public static void main(String[] args)
+   {
+      //Variable
+      final int POWER_OF_TWO_CONSTANT = 2;
+      double number;
+      int powerOfTwo= POWER_OF_TWO_CONSTANT;
+      int power = 0;
+      Scanner sc = new Scanner(System.in);
+      
+      //Promt user for a number
+      System.out.print("Enter a number: ");
+      number = sc.nextDouble();
+     
+     //Find the power of 2 that is greater or equal to the number given
+      for(int i = 2; powerOfTwo < number; i++)
+      {
+         powerOfTwo = powerOfTwo * POWER_OF_TWO_CONSTANT;
+         power = i;
+      }
+      
+      
+      //Output result of caculation
+      System.out.printf("%d = 2^%d is the smallest power of two greater than or equal to %.0f.\n", powerOfTwo, power, number);      
+   }
+}
