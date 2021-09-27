@@ -1,0 +1,192 @@
+public class turtle3 {
+   public static void main(String[] a)
+   {
+      Turtle turtle = new Turtle();
+   //Look at https://docs.oracle.com/javase/7/docs/api/java/awt/Color.html for different colours
+      Turtle.bgcolor("lightblue");
+      turtle.penColor("black");
+      turtle.width(10);
+      int houseSize = 5;
+   
+   //Turtle draw square and end at top right corner
+      for(int t = 0; t < 6; t++)
+      {
+         for(int i = 0; i < 100; i++)
+         {
+            turtle.forward(houseSize);
+         }
+         turtle.left(90);
+      }
+      
+   //Turtle starts drawing triangle
+      turtle.left(180);
+      for(int i = 0; i < 10; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.left(135);
+      for(int i = 0; i < 85; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.left(90);
+      for(int i = 0; i < 85; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.left(135);
+      for(int i = 0; i < 120; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      
+   //Turtle draw the chimney
+      turtle.left(135);
+      for(int i = 0; i < 10; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.right(45);
+      for(int i = 0; i < 70; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.left(90);
+      for(int i = 0; i < 10; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.left(90);
+      for(int i = 0; i < 60; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.left(45);
+      for(int i = 0; i < 24; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.right(135);
+      for(int i = 0; i < 10; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.left(90);
+      
+      //Turtle starting building the window
+      for(int i = 0; i < 10; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.right(90);
+      turtle.penColor("lightblue");
+      for(int i = 0; i < 10; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.penColor("black");
+      for(int t = 0; t < 4; t++)
+      {
+         for(int i = 0; i < 20; i++)
+         {
+            turtle.forward(houseSize);
+         }
+         turtle.left(90);
+      }
+      for(int i = 0; i < 10; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      for(int t = 0; t < 2; t++)
+      {
+         turtle.left(90);
+         for(int i = 0; i < 10; i++)
+         {
+            turtle.forward(houseSize);
+         }
+         
+      }     
+      turtle.right(90);
+      for(int i = 0; i < 10; i++)
+      {
+         turtle.forward(houseSize);
+      }    
+      turtle.right(90);
+      for(int i = 0; i < 10; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.right(90);
+      for(int i = 0; i < 10; i++)
+      {
+         turtle.forward(houseSize);
+      }    
+      turtle.left(90);
+      for(int i = 0; i < 10; i++)
+      {
+         turtle.forward(houseSize);
+      }    
+         
+         //Turtle starts building the door
+      turtle.penColor("lightblue");
+      for(int i = 0; i < 20; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.left(90);
+      for(int i = 0; i < 20; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.penColor("black");
+      for(int i = 0; i < 60; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.right(90);
+      for(int i = 0; i < 20; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.right(90);
+      for(int i = 0; i < 60; i++)
+      {
+         turtle.forward(houseSize);
+      }
+      turtle.right(90);
+      for(int i = 0; i < 20; i++)
+      {
+         turtle.forward(houseSize);
+      }
+
+
+
+         
+      
+   /*possible codes:
+   bob.forward(distance)
+   bob.backward(distance)
+   bob.left(angle)
+   bob.right(angle)
+   
+   bob.up()
+   bob.down()
+   
+   bob.setDirection(angle)
+   bob.home()
+   bob.hide()
+   bob.show()
+   bob.face(x, y)
+   bob.setPosition(x, y)
+   
+   bob.tilt(angle)
+   bob.width(width)
+   bob.penColor("colour")
+   bob.bgcolor("colour")
+   bob.stamp()
+   bob.dot()
+   bob.dot("colour")
+   bob.dot("colour", dotsize)
+   */
+   }
+}
